@@ -1,0 +1,2 @@
+module SpaceScene2sHelper
+end

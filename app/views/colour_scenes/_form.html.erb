@@ -1,0 +1,49 @@
+<%= form_for(@colour_scene) do |f| %>
+  <% if @colour_scene.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@colour_scene.errors.count, "error") %> prohibited this colour_scene from being saved:</h2>
+
+      <ul>
+      <% @colour_scene.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :file_name %><br>
+    <%= f.text_field :file_name %>
+  </div>
+  <div class="field">
+    <%= f.label :vertices_number %><br>
+    <%= f.text_field :vertices_number %>
+  </div>
+  <div class="field">
+    <%= f.label :space_ratio %><br>
+    <%= f.text_field :space_ratio %>
+  </div>
+  <div class="field">
+    <%= f.label :position_difference %><br>
+    <%= f.text_field :position_difference %>
+  </div>
+  <div class="field">
+    <%= f.label :colour_difference %><br>
+    <%= f.text_field :colour_difference %>
+  </div>
+  <div class="field">
+    <%= f.label :scene_score %><br>
+    <%= f.text_field :scene_score %>
+  </div>
+  <div class="field">
+    <%= f.label :admin_panel_id %><br>
+    <%= f.number_field :admin_panel_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_panel_id %><br>
+    <%= f.number_field :user_panel_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

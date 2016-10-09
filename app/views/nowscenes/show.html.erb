@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @nowscene.file_name %>
+</p>
+
+<p>
+  <strong>Vertices number:</strong>
+  <%= @nowscene.vertices_number %>
+</p>
+
+<p>
+  <strong>Space ratio:</strong>
+  <%= @nowscene.space_ratio %>
+</p>
+
+<p>
+  <strong>Position difference:</strong>
+  <%= @nowscene.position_difference %>
+</p>
+
+<p>
+  <strong>Colour difference:</strong>
+  <%= @nowscene.colour_difference %>
+</p>
+
+<p>
+  <strong>Scene score:</strong>
+  <%= @nowscene.scene_score %>
+</p>
+
+<p>
+  <strong>Admin panel:</strong>
+  <%= @nowscene.admin_panel_id %>
+</p>
+
+<p>
+  <strong>User panel:</strong>
+  <%= @nowscene.user_panel_id %>
+</p>
+
+<%= link_to 'Edit', edit_nowscene_path(@nowscene) %> |
+<%= link_to 'Back', nowscenes_path %>

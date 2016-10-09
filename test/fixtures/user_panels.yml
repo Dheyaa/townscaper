@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  consent: false
+  feedback: false
+  user_id: 1
+  admin_panel_id: 1
+  scenes_completed: false
+  tutorial_completed: false
+  scene_valid: false
+  age_group: MyString
+  art_related: false
+  gender: MyString
+  education_level: MyString
+
+two:
+  consent: false
+  feedback: false
+  user_id: 1
+  admin_panel_id: 1
+  scenes_completed: false
+  tutorial_completed: false
+  scene_valid: false
+  age_group: MyString
+  art_related: false
+  gender: MyString
+  education_level: MyString

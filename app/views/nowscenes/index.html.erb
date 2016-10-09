@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Nowscenes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Vertices number</th>
+      <th>Space ratio</th>
+      <th>Position difference</th>
+      <th>Colour difference</th>
+      <th>Scene score</th>
+      <th>Admin panel</th>
+      <th>User panel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nowscenes.each do |nowscene| %>
+      <tr>
+        <td><%= nowscene.file_name %></td>
+        <td><%= nowscene.vertices_number %></td>
+        <td><%= nowscene.space_ratio %></td>
+        <td><%= nowscene.position_difference %></td>
+        <td><%= nowscene.colour_difference %></td>
+        <td><%= nowscene.scene_score %></td>
+        <td><%= nowscene.admin_panel_id %></td>
+        <td><%= nowscene.user_panel_id %></td>
+        <td><%= link_to 'Show', nowscene %></td>
+        <td><%= link_to 'Edit', edit_nowscene_path(nowscene) %></td>
+        <td><%= link_to 'Destroy', nowscene, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nowscene', new_nowscene_path %>

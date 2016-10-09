@@ -1,0 +1,1 @@
+json.partial! "colour_scene2s/colour_scene2", colour_scene2: @colour_scene2

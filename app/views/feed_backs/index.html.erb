@@ -1,0 +1,21 @@
+<div class="container">
+  <% if notice %>
+    <div class="alert alert-info">
+      <%= notice %>
+    </div>
+  <% end %>
+  <% if user_signed_in? %>
+    <% unless current_user.user_panel.feed_back.nil? || current_user.user_panel.feed_back.blank? %>
+      <% @feed_back = current_user.user_panel.feed_back %>
+      <h1>Feedback</h1>
+      <p><strong>Title:</strong> <%= @feed_back.title %></p>
+      <p><strong>Body:</strong> <%= @feed_back.body %></p>
+    <% end %>
+    <% unless current_user.user_panel.nil? || current_user.user_panel.blank? %>
+      <% @user_panel = current_user.user_panel %>
+      <%= link_to 'Back', @user_panel %>
+    <% else %>
+      <%= link_to "Home", main_path%>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,259 @@
+<div class="container">
+	<% vertices_number = [] %>
+	<% space_ratio = [] %>
+	<% position_difference = [] %>
+	<% colour_difference = [] %>
+	<% ColourScene.all.order(:colour_difference).each do |scene| %>
+		<% vertices_number.push(scene.vertices_number) %>
+		<% space_ratio.push(scene.space_ratio) %>
+		<% position_difference.push(scene.position_difference) %>
+		<% colour_difference.push(scene.colour_difference) %>
+	<% end %>
+	<p><strong>Number of data:</strong> <%= ColourScene.all.count %></p>
+
+	<p>vertices_number <- c(
+		<% i = 0 %>
+		<% vertices_number.each do |number| %>
+			<% i+=1 %>
+			<% if i == vertices_number.count %>
+				<%= number %>
+			<% else %>
+				<%= number %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>space_ratio <- c(
+		<% x = 0 %>
+		<% space_ratio.each do |ratio| %>
+			<% x+=1 %>
+			<% if x == space_ratio.count %>
+				<%= ratio %>
+			<% else %>
+				<%= ratio %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>position_difference <- c(
+		<% n = 0 %>
+		<% position_difference.each do |pos| %>
+			<% n+=1 %>
+			<% if n == position_difference.count %>
+				<%= pos %>
+			<% else %>
+				<%= pos %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>colour_difference <- c(
+		<% h = 0 %>
+		<% colour_difference.each do |col| %>
+			<% h+=1 %>
+			<% if h == colour_difference.count %>
+				<%= col %>
+			<% else %>
+				<%= col %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+</div>
+
+<!-- Colour_difference1 -->
+<div class="container">
+	<h2>Colour Difference 1: </h2>
+	<% vertices_number = [] %>
+	<% space_ratio = [] %>
+	<% position_difference = [] %>
+	<% colour_difference = [] %>
+	<% ColourScene1.order(:colour_difference).all.each do |scene| %>
+		<% vertices_number.push(scene.vertices_number) %>
+		<% space_ratio.push(scene.space_ratio) %>
+		<% position_difference.push(scene.position_difference) %>
+		<% colour_difference.push(scene.colour_difference) %>
+	<% end %>
+	<p><strong>Number of data:</strong> <%= ColourScene1.all.count %></p>
+
+	<p>vertices_number <- c(
+		<% i = 0 %>
+		<% vertices_number.each do |number| %>
+			<% i+=1 %>
+			<% if i == vertices_number.count %>
+				<%= number %>
+			<% else %>
+				<%= number %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>space_ratio <- c(
+		<% x = 0 %>
+		<% space_ratio.each do |ratio| %>
+			<% x+=1 %>
+			<% if x == space_ratio.count %>
+				<%= ratio %>
+			<% else %>
+				<%= ratio %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>position_difference <- c(
+		<% n = 0 %>
+		<% position_difference.each do |pos| %>
+			<% n+=1 %>
+			<% if n == position_difference.count %>
+				<%= pos %>
+			<% else %>
+				<%= pos %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>colour_difference <- c(
+		<% h = 0 %>
+		<% colour_difference.each do |col| %>
+			<% h+=1 %>
+			<% if h == colour_difference.count %>
+				<%= col %>
+			<% else %>
+				<%= col %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+</div>
+
+
+<!-- Colour_difference2 -->
+<div class="container">
+	<h2>Colour Difference 2: </h2>
+	<% vertices_number = [] %>
+	<% space_ratio = [] %>
+	<% position_difference = [] %>
+	<% colour_difference = [] %>
+	<% ColourScene2.order(:colour_difference).all.each do |scene| %>
+		<% vertices_number.push(scene.vertices_number) %>
+		<% space_ratio.push(scene.space_ratio) %>
+		<% position_difference.push(scene.position_difference) %>
+		<% colour_difference.push(scene.colour_difference) %>
+	<% end %>
+	<p><strong>Number of data:</strong> <%= ColourScene2.all.count %></p>
+
+	<p>vertices_number <- c(
+		<% i = 0 %>
+		<% vertices_number.each do |number| %>
+			<% i+=1 %>
+			<% if i == vertices_number.count %>
+				<%= number %>
+			<% else %>
+				<%= number %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>space_ratio <- c(
+		<% x = 0 %>
+		<% space_ratio.each do |ratio| %>
+			<% x+=1 %>
+			<% if x == space_ratio.count %>
+				<%= ratio %>
+			<% else %>
+				<%= ratio %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>position_difference <- c(
+		<% n = 0 %>
+		<% position_difference.each do |pos| %>
+			<% n+=1 %>
+			<% if n == position_difference.count %>
+				<%= pos %>
+			<% else %>
+				<%= pos %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>colour_difference <- c(
+		<% h = 0 %>
+		<% colour_difference.each do |col| %>
+			<% h+=1 %>
+			<% if h == colour_difference.count %>
+				<%= col %>
+			<% else %>
+				<%= col %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+</div>
+
+
+<!-- Colour_difference3 -->
+<div class="container">
+	<h2>Colour Difference 3: </h2>
+	<% vertices_number = [] %>
+	<% space_ratio = [] %>
+	<% position_difference = [] %>
+	<% colour_difference = [] %>
+	<% ColourScene3.order(:colour_difference).all.each do |scene| %>
+		<% vertices_number.push(scene.vertices_number) %>
+		<% space_ratio.push(scene.space_ratio) %>
+		<% position_difference.push(scene.position_difference) %>
+		<% colour_difference.push(scene.colour_difference) %>
+	<% end %>
+	<p><strong>Number of data:</strong> <%= ColourScene3.all.count %></p>
+
+	<p>vertices_number <- c(
+		<% i = 0 %>
+		<% vertices_number.each do |number| %>
+			<% i+=1 %>
+			<% if i == vertices_number.count %>
+				<%= number %>
+			<% else %>
+				<%= number %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>space_ratio <- c(
+		<% x = 0 %>
+		<% space_ratio.each do |ratio| %>
+			<% x+=1 %>
+			<% if x == space_ratio.count %>
+				<%= ratio %>
+			<% else %>
+				<%= ratio %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>position_difference <- c(
+		<% n = 0 %>
+		<% position_difference.each do |pos| %>
+			<% n+=1 %>
+			<% if n == position_difference.count %>
+				<%= pos %>
+			<% else %>
+				<%= pos %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>colour_difference <- c(
+		<% h = 0 %>
+		<% colour_difference.each do |col| %>
+			<% h+=1 %>
+			<% if h == colour_difference.count %>
+				<%= col %>
+			<% else %>
+				<%= col %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+</div>

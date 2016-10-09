@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Position Scene1s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Vertices number</th>
+      <th>Space ratio</th>
+      <th>Position difference</th>
+      <th>Colour difference</th>
+      <th>Scene score</th>
+      <th>Admin panel</th>
+      <th>User panel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @position_scene1s.each do |position_scene1| %>
+      <tr>
+        <td><%= position_scene1.file_name %></td>
+        <td><%= position_scene1.vertices_number %></td>
+        <td><%= position_scene1.space_ratio %></td>
+        <td><%= position_scene1.position_difference %></td>
+        <td><%= position_scene1.colour_difference %></td>
+        <td><%= position_scene1.scene_score %></td>
+        <td><%= position_scene1.admin_panel_id %></td>
+        <td><%= position_scene1.user_panel_id %></td>
+        <td><%= link_to 'Show', position_scene1 %></td>
+        <td><%= link_to 'Edit', edit_position_scene1_path(position_scene1) %></td>
+        <td><%= link_to 'Destroy', position_scene1, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Position scene1', new_position_scene1_path %>

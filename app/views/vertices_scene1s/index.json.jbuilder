@@ -1,0 +1,1 @@
+json.array! @vertices_scene1s, partial: 'vertices_scene1s/vertices_scene1', as: :vertices_scene1

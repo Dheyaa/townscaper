@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Colour Scenes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Vertices number</th>
+      <th>Space ratio</th>
+      <th>Position difference</th>
+      <th>Colour difference</th>
+      <th>Scene score</th>
+      <th>Admin panel</th>
+      <th>User panel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @colour_scenes.each do |colour_scene| %>
+      <tr>
+        <td><%= colour_scene.file_name %></td>
+        <td><%= colour_scene.vertices_number %></td>
+        <td><%= colour_scene.space_ratio %></td>
+        <td><%= colour_scene.position_difference %></td>
+        <td><%= colour_scene.colour_difference %></td>
+        <td><%= colour_scene.scene_score %></td>
+        <td><%= colour_scene.admin_panel_id %></td>
+        <td><%= colour_scene.user_panel_id %></td>
+        <td><%= link_to 'Show', colour_scene %></td>
+        <td><%= link_to 'Edit', edit_colour_scene_path(colour_scene) %></td>
+        <td><%= link_to 'Destroy', colour_scene, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Colour scene', new_colour_scene_path %>

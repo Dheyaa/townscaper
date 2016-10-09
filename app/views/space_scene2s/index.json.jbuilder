@@ -1,0 +1,1 @@
+json.array! @space_scene2s, partial: 'space_scene2s/space_scene2', as: :space_scene2

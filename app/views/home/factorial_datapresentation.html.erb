@@ -1,0 +1,391 @@
+<div class="container">
+	<% vertices_number = [] %>
+	<% space_ratio = [] %>
+	<% position_difference = [] %>
+	<% colour_difference = [] %>
+	<% FactorialScene.all.order('created_at ASC').each do |scene| %>
+		<% vertices_number.push(scene.vertices_number) %>
+		<% space_ratio.push(scene.space_ratio) %>
+		<% position_difference.push(scene.position_difference) %>
+		<% colour_difference.push(scene.colour_difference) %>
+	<% end %>
+	<p><strong>Number of data:</strong> <%= FactorialScene.all.count %></p>
+
+	<p>vertices_number <- c(
+		<% i = 0 %>
+		<% vertices_number.each do |number| %>
+			<% i+=1 %>
+			<% if i == vertices_number.count %>
+				<%= number %>
+			<% else %>
+				<%= number %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>space_ratio <- c(
+		<% x = 0 %>
+		<% space_ratio.each do |ratio| %>
+			<% x+=1 %>
+			<% if x == space_ratio.count %>
+				<%= ratio %>
+			<% else %>
+				<%= ratio %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>position_difference <- c(
+		<% n = 0 %>
+		<% position_difference.each do |pos| %>
+			<% n+=1 %>
+			<% if n == position_difference.count %>
+				<%= pos %>
+			<% else %>
+				<%= pos %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>colour_difference <- c(
+		<% h = 0 %>
+		<% colour_difference.each do |col| %>
+			<% h+=1 %>
+			<% if h == colour_difference.count %>
+				<%= col %>
+			<% else %>
+				<%= col %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+</div>
+
+<!-- Factorial 1 -->
+<div class="container">
+	<h2>Factorial 1: </h2>
+	<% vertices_number = [] %>
+	<% space_ratio = [] %>
+	<% position_difference = [] %>
+	<% colour_difference = [] %>
+	<% FactorialScene1.order('created_at ASC').all.each do |scene| %>
+		<% vertices_number.push(scene.vertices_number) %>
+		<% space_ratio.push(scene.space_ratio) %>
+		<% position_difference.push(scene.position_difference) %>
+		<% colour_difference.push(scene.colour_difference) %>
+	<% end %>
+	<p><strong>Number of data:</strong> <%= FactorialScene1.all.count %></p>
+
+	<p>vertices_number <- c(
+		<% i = 0 %>
+		<% vertices_number.each do |number| %>
+			<% i+=1 %>
+			<% if i == vertices_number.count %>
+				<%= number %>
+			<% else %>
+				<%= number %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>space_ratio <- c(
+		<% x = 0 %>
+		<% space_ratio.each do |ratio| %>
+			<% x+=1 %>
+			<% if x == space_ratio.count %>
+				<%= ratio %>
+			<% else %>
+				<%= ratio %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>position_difference <- c(
+		<% n = 0 %>
+		<% position_difference.each do |pos| %>
+			<% n+=1 %>
+			<% if n == position_difference.count %>
+				<%= pos %>
+			<% else %>
+				<%= pos %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>colour_difference <- c(
+		<% h = 0 %>
+		<% colour_difference.each do |col| %>
+			<% h+=1 %>
+			<% if h == colour_difference.count %>
+				<%= col %>
+			<% else %>
+				<%= col %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+</div>
+
+
+<!-- Factorial 2 -->
+<div class="container">
+	<h2>Factorial 2: </h2>
+	<% vertices_number = [] %>
+	<% space_ratio = [] %>
+	<% position_difference = [] %>
+	<% colour_difference = [] %>
+	<% FactorialScene2.order('created_at ASC').all.each do |scene| %>
+		<% vertices_number.push(scene.vertices_number) %>
+		<% space_ratio.push(scene.space_ratio) %>
+		<% position_difference.push(scene.position_difference) %>
+		<% colour_difference.push(scene.colour_difference) %>
+	<% end %>
+	<p><strong>Number of data:</strong> <%= FactorialScene2.all.count %></p>
+
+	<p>vertices_number <- c(
+		<% i = 0 %>
+		<% vertices_number.each do |number| %>
+			<% i+=1 %>
+			<% if i == vertices_number.count %>
+				<%= number %>
+			<% else %>
+				<%= number %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>space_ratio <- c(
+		<% x = 0 %>
+		<% space_ratio.each do |ratio| %>
+			<% x+=1 %>
+			<% if x == space_ratio.count %>
+				<%= ratio %>
+			<% else %>
+				<%= ratio %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>position_difference <- c(
+		<% n = 0 %>
+		<% position_difference.each do |pos| %>
+			<% n+=1 %>
+			<% if n == position_difference.count %>
+				<%= pos %>
+			<% else %>
+				<%= pos %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>colour_difference <- c(
+		<% h = 0 %>
+		<% colour_difference.each do |col| %>
+			<% h+=1 %>
+			<% if h == colour_difference.count %>
+				<%= col %>
+			<% else %>
+				<%= col %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+</div>
+
+
+<!-- Factorial 3 -->
+<div class="container">
+	<h2>Factorial 3: </h2>
+	<% vertices_number = [] %>
+	<% space_ratio = [] %>
+	<% position_difference = [] %>
+	<% colour_difference = [] %>
+	<% FactorialScene3.order('created_at ASC').all.each do |scene| %>
+		<% vertices_number.push(scene.vertices_number) %>
+		<% space_ratio.push(scene.space_ratio) %>
+		<% position_difference.push(scene.position_difference) %>
+		<% colour_difference.push(scene.colour_difference) %>
+	<% end %>
+	<p><strong>Number of data:</strong> <%= FactorialScene3.all.count %></p>
+
+	<p>vertices_number <- c(
+		<% i = 0 %>
+		<% vertices_number.each do |number| %>
+			<% i+=1 %>
+			<% if i == vertices_number.count %>
+				<%= number %>
+			<% else %>
+				<%= number %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>space_ratio <- c(
+		<% x = 0 %>
+		<% space_ratio.each do |ratio| %>
+			<% x+=1 %>
+			<% if x == space_ratio.count %>
+				<%= ratio %>
+			<% else %>
+				<%= ratio %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>position_difference <- c(
+		<% n = 0 %>
+		<% position_difference.each do |pos| %>
+			<% n+=1 %>
+			<% if n == position_difference.count %>
+				<%= pos %>
+			<% else %>
+				<%= pos %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>colour_difference <- c(
+		<% h = 0 %>
+		<% colour_difference.each do |col| %>
+			<% h+=1 %>
+			<% if h == colour_difference.count %>
+				<%= col %>
+			<% else %>
+				<%= col %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+</div>
+
+
+<!-- Factorial 4 -->
+<div class="container">
+	<h2>Factorial 4: </h2>
+	<% vertices_number = [] %>
+	<% space_ratio = [] %>
+	<% position_difference = [] %>
+	<% colour_difference = [] %>
+	<% FactorialScene4.order('created_at ASC').all.each do |scene| %>
+		<% vertices_number.push(scene.vertices_number) %>
+		<% space_ratio.push(scene.space_ratio) %>
+		<% position_difference.push(scene.position_difference) %>
+		<% colour_difference.push(scene.colour_difference) %>
+	<% end %>
+	<p><strong>Number of data:</strong> <%= FactorialScene4.all.count %></p>
+
+	<p>vertices_number <- c(
+		<% i = 0 %>
+		<% vertices_number.each do |number| %>
+			<% i+=1 %>
+			<% if i == vertices_number.count %>
+				<%= number %>
+			<% else %>
+				<%= number %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>space_ratio <- c(
+		<% x = 0 %>
+		<% space_ratio.each do |ratio| %>
+			<% x+=1 %>
+			<% if x == space_ratio.count %>
+				<%= ratio %>
+			<% else %>
+				<%= ratio %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>position_difference <- c(
+		<% n = 0 %>
+		<% position_difference.each do |pos| %>
+			<% n+=1 %>
+			<% if n == position_difference.count %>
+				<%= pos %>
+			<% else %>
+				<%= pos %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>colour_difference <- c(
+		<% h = 0 %>
+		<% colour_difference.each do |col| %>
+			<% h+=1 %>
+			<% if h == colour_difference.count %>
+				<%= col %>
+			<% else %>
+				<%= col %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+</div>
+
+
+<!-- Factorial 5 -->
+<div class="container">
+	<h2>Factorial 5: </h2>
+	<% vertices_number = [] %>
+	<% space_ratio = [] %>
+	<% position_difference = [] %>
+	<% colour_difference = [] %>
+	<% FactorialScene5.order('created_at ASC').all.each do |scene| %>
+		<% vertices_number.push(scene.vertices_number) %>
+		<% space_ratio.push(scene.space_ratio) %>
+		<% position_difference.push(scene.position_difference) %>
+		<% colour_difference.push(scene.colour_difference) %>
+	<% end %>
+	<p><strong>Number of data:</strong> <%= FactorialScene5.all.count %></p>
+
+	<p>vertices_number <- c(
+		<% i = 0 %>
+		<% vertices_number.each do |number| %>
+			<% i+=1 %>
+			<% if i == vertices_number.count %>
+				<%= number %>
+			<% else %>
+				<%= number %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>space_ratio <- c(
+		<% x = 0 %>
+		<% space_ratio.each do |ratio| %>
+			<% x+=1 %>
+			<% if x == space_ratio.count %>
+				<%= ratio %>
+			<% else %>
+				<%= ratio %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>position_difference <- c(
+		<% n = 0 %>
+		<% position_difference.each do |pos| %>
+			<% n+=1 %>
+			<% if n == position_difference.count %>
+				<%= pos %>
+			<% else %>
+				<%= pos %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+	<p>colour_difference <- c(
+		<% h = 0 %>
+		<% colour_difference.each do |col| %>
+			<% h+=1 %>
+			<% if h == colour_difference.count %>
+				<%= col %>
+			<% else %>
+				<%= col %>,
+			<% end %>
+		<% end %>
+	) </p>
+
+</div>

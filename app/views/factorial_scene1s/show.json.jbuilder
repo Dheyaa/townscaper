@@ -1,0 +1,1 @@
+json.partial! "factorial_scene1s/factorial_scene1", factorial_scene1: @factorial_scene1

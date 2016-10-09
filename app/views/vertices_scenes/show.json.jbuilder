@@ -1,0 +1,1 @@
+json.partial! "vertices_scenes/vertices_scene", vertices_scene: @vertices_scene

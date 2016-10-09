@@ -1,0 +1,20 @@
+<% if notice %>
+	<div class="alert alert-info">
+		<%= notice %>
+	</div>
+<% end %>
+<div class="container">
+<p>
+  <strong>Title:</strong>
+  <%= @feed_back.title %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @feed_back.body %>
+</p>
+</div>
+<div class="container">
+	<%= link_to 'Edit', edit_feed_back_path(@feed_back) %> |
+	<%= link_to "back", user_panels_path %>
+</div>

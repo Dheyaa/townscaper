@@ -1,0 +1,1 @@
+json.partial! "scene2s/scene2", scene2: @scene2

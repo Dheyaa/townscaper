@@ -1,0 +1,30 @@
+<%= form_for(@feed_back) do |f| %>
+  <% if @feed_back.errors.any? %>
+  <div class="container">
+    <div class="alert alert-warning">
+      <strong><%= pluralize(@feed_back.errors.count, "error") %></strong> prohibited this feed_back from being saved:
+      <ul>
+      <% @feed_back.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+  <div class="field">
+      <%= f.hidden_field :user_panel_id %>
+  </div>
+<div class="container">
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body, "Message" %><br>
+    <%= f.text_area :body, size: "40x10" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Send Feedback" %>
+  </div>
+</div>
+<% end %>

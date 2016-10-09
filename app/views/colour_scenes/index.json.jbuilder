@@ -1,0 +1,1 @@
+json.array! @colour_scenes, partial: 'colour_scenes/colour_scene', as: :colour_scene

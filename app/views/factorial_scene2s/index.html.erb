@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Factorial Scene2s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Vertices number</th>
+      <th>Space ratio</th>
+      <th>Position difference</th>
+      <th>Colour difference</th>
+      <th>Scene score</th>
+      <th>Admin panel</th>
+      <th>User panel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @factorial_scene2s.each do |factorial_scene2| %>
+      <tr>
+        <td><%= factorial_scene2.file_name %></td>
+        <td><%= factorial_scene2.vertices_number %></td>
+        <td><%= factorial_scene2.space_ratio %></td>
+        <td><%= factorial_scene2.position_difference %></td>
+        <td><%= factorial_scene2.colour_difference %></td>
+        <td><%= factorial_scene2.scene_score %></td>
+        <td><%= factorial_scene2.admin_panel_id %></td>
+        <td><%= factorial_scene2.user_panel_id %></td>
+        <td><%= link_to 'Show', factorial_scene2 %></td>
+        <td><%= link_to 'Edit', edit_factorial_scene2_path(factorial_scene2) %></td>
+        <td><%= link_to 'Destroy', factorial_scene2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Factorial scene2', new_factorial_scene2_path %>

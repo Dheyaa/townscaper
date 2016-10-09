@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @scene1.file_name %>
+</p>
+
+<p>
+  <strong>Vertices number:</strong>
+  <%= @scene1.vertices_number %>
+</p>
+
+<p>
+  <strong>Space ratio:</strong>
+  <%= @scene1.space_ratio %>
+</p>
+
+<p>
+  <strong>Position difference:</strong>
+  <%= @scene1.position_difference %>
+</p>
+
+<p>
+  <strong>Colour difference:</strong>
+  <%= @scene1.colour_difference %>
+</p>
+
+<p>
+  <strong>Scene score:</strong>
+  <%= @scene1.scene_score %>
+</p>
+
+<p>
+  <strong>Admin panel:</strong>
+  <%= @scene1.admin_panel_id %>
+</p>
+
+<p>
+  <strong>User panel:</strong>
+  <%= @scene1.user_panel_id %>
+</p>
+
+<%= link_to 'Edit', edit_scene1_path(@scene1) %> |
+<%= link_to 'Back', scene1s_path %>

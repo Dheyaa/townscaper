@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Townscaper</title>
+  <!-- This is to protect my data -->
+  <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    <!-- /This is to protect my data -->
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Townscaper", main_path, class: "navbar-brand"%>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="nav-item"><%= link_to "About", main_path%></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% unless admin_signed_in? %>
+          <% if user_signed_in? %>
+            <% if user_signed_in? && current_user.user_panel %>
+              <li class="nav-item"><%= link_to user_panels_path, class: "glyphicon glyphicon-cog" do %>
+                  <span><%= current_user.email %></span>
+                <% end %>
+              </li>
+            <% else %>
+              <li class="nav-item"><%= link_to edit_user_registration_path, class: "glyphicon glyphicon-ok-sign" do %>
+                <span><%= current_user.email %></span>
+                <% end %>
+              </li>
+            <% end %>
+            <li class="nav-item"><%= link_to " Logout", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to " SignUp", new_user_registration_path, class: "glyphicon glyphicon-user" %></li>
+            <li class="nav-item"><%= link_to " Login", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+          <% end %>
+        <% end %>
+        <% if admin_signed_in? %>
+          <li><%= link_to " Admin Panel", admin_path, class: "glyphicon glyphicon-ok-sign" %></li>
+          <li><%= link_to "Logout", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+
+<%= yield %>
+
+<nav class="navbar navbar-fixed-bottom navbar-light" style="background-color: #e8e8e8;">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="nav-item"><%= link_to "Contact Us", contact_us_contact_path, class: "text-muted" %></li>
+      <li class="nav-item hidden-xs"><a href="https://www.facebook.com/groups/1002155136534252"><%= image_tag("facebook-wrap.png", size: "25", class: "img-responsive") %></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right hidden-xs">
+      <li class="nav-item hidden-m-down"><%= link_to " Townscaper", main_path, class: "text-muted glyphicon glyphicon-copyright-mark" %></li>
+    </ul>
+  </div>
+</nav>
+</body>
+</html>
+
+<!-- This code is to hide navbar-toggle collapsed after click it again in the mobile mode  -->
+<script>
+$(document).on('click',function(){
+$('.collapse').collapse('hide');
+})
+</script> 
+<!-- /This code -->

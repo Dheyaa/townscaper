@@ -1,0 +1,2 @@
+module FactorialScene4sHelper
+end

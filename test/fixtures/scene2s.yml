@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  file_name: MyString
+  vertices_number: 9.99
+  space_ratio: 9.99
+  position_difference: 9.99
+  colour_difference: 9.99
+  scene_score: 9.99
+  admin_panel_id: 1
+  user_panel_id: 1
+
+two:
+  file_name: MyString
+  vertices_number: 9.99
+  space_ratio: 9.99
+  position_difference: 9.99
+  colour_difference: 9.99
+  scene_score: 9.99
+  admin_panel_id: 1
+  user_panel_id: 1

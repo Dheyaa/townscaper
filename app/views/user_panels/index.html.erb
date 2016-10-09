@@ -1,0 +1,32 @@
+<% if notice %>
+  <div class="alert alert-info">
+    <%= notice %>
+  </div>
+<% end %>
+<% if user_signed_in? %>
+  <% if current_user.user_panel %>
+    <div class="container">
+      <h1>User Control Panel</h1>
+    </div>
+    <div class="container">
+      <% @user_panel = current_user.user_panel %>
+      <h4 class="dis-inline-block"><strong>My email: </strong><%= current_user.email %></h4><span> </span><%= link_to "Edit email information", edit_user_registration_path %>
+    </div>
+    <div class="container">
+      <% unless @user_panel.scene_valid == true %>
+        <%= link_to 'View the experiment', @user_panel %> |
+      <% end %>
+    <% if @user_panel.feed_back %>
+          <% feed_back = @user_panel.feed_back %>
+          <%= link_to 'Edit Feedback', edit_feed_back_path(feed_back) %> |
+          <% else %>
+          <%= link_to "Feedback", :controller => "feed_backs", :action => "new", :myuser_panel_id => @user_panel.id %> |
+          <% end %>  
+          <%= link_to 'Cancel my participation', @user_panel, method: :delete, data: { confirm: 'Are you sure?' } %>     
+        <% end %>
+      <% end %>
+  </div>
+
+  <div class="container text-center top-space">
+    <%= button_to "Exit", destroy_user_session_path, method: :delete, class: "btn btn-success" %>
+  </div>

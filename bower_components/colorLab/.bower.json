@@ -1,0 +1,14 @@
+{
+  "name": "colorLab",
+  "homepage": "https://github.com/signalwerk/colorLab",
+  "_release": "2c6fb68412",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2c6fb68412d79b475645eade0ed151087a8141a6"
+  },
+  "_source": "git://github.com/signalwerk/colorLab.git",
+  "_target": "*",
+  "_originalSource": "signalwerk/colorLab",
+  "_direct": true
+}

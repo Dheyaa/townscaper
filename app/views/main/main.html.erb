@@ -1,0 +1,43 @@
+<!-- jumbotron -->
+	<div class="jumbotron jumbotron-fluid light-blue-bg modify-space">
+		<div class="container text-center p-t-3">
+			<h1 class="display-2">Townscaper</h1>
+			<p class="lead">A Tool to Assess Visual Consistency in Townscape!</p>
+			<% if AdminPanel.first %>
+				<div class="btn btn-primary bigger-font format-link adjust-space">
+				<%= link_to "Take the questionnaire", :controller => "user_panels", :action => "new", :admin_panel_id => AdminPanel.first.id %>
+				</div>
+			<% end %>
+		</div>
+	</div>		
+<!-- /jumbotron -->
+
+<!-- Main page body -->
+	<div class="container-fluid text-center">
+		<div class="row">
+			<div class="col-md-4">
+				<h3 class="alert alert-info special-ali">About Townscaper</h3>
+				<p class="text-justify p-larger">Townscaper is an experiment which is part of a Ph.D. study to evaluate visual consistency in townscape based on the preferences of users. It analyses users’ choices towards a group of virtual scenes and uses the results to predict the average judgement of users towards further scenes. By participating in this questionnaire, you will help to test the validity of the approach which is proposed by the study.</p>
+				<p class="text-justify p-larger">The experiment will take about <strong>10 minutes</strong> and can be done <strong>online</strong> at <strong>any time</strong>.</p>
+			</div>
+			<div class="col-md-4">
+				<h3 class="alert alert-info special-ali">Requirements</h3>
+				<p class="text-justify p-larger">Please do not use smart phones or other small devices to run the questionnaire. Big screens are required for better visual judgement.</p>
+				<p class="text-justify p-larger">If you noticed that the website it taking long time to respond, please open it in <strong>Incognito Window</strong> by right click on your browser icon and choosing "New Incognito Window for Chrome or "New Private Window" for Safari, and pasting www.townscaper.com in the search field of the incognito window.</p>
+				<p><%= image_tag("about1.png", size: "400", class: "img-responsive modify-img-responsive img-rounded") %></p>
+				<p>(A sample from the questionnaire)</p>
+			</div>
+			<div class="col-md-4">
+				<h3 class="alert alert-info special-ali">Who Can Participate</h3>
+				<p class="text-justify p-larger">To participate in this experiment, you need to be <strong>over 18 years old</strong> and you have no condition that could affect your ability to rate scenes, particularly visual impairment including <strong>colour blindness</strong>.</p>
+				<h3 class="alert alert-success special-ali">Thank You Voucher Card!</h3>
+				<p class="text-justify p-larger">To thank you for your time answering the questionnaire, you will receive a <strong>HOYTS Cinema Voucher</strong> valid for 6 months. You can collect the gift form the researcher office (Room 522, Wilkinson Building, 148 City Rd, Darlington, NSW, 2008) from 11 am to 6:30 pm on week days.</p>
+			</div>
+		</div>
+	</div>
+	<% if AdminPanel.first %>
+		<div class="container-fluid text-center top-space">
+			<h2><%= button_to "Register Now", {:controller => "user_panels", :action => "new", :admin_panel_id => AdminPanel.first.id}, {class: "btn btn-primary bigger-font top-space", method: "get"} %></h2>
+		</div>
+	<% end %>
+<!-- /Main page body -->

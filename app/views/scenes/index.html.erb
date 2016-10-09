@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Scenes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Vertices number</th>
+      <th>Space ratio</th>
+      <th>Position difference</th>
+      <th>Colour difference</th>
+      <th>Scene score</th>
+      <th>Admin panel</th>
+      <th>User panel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scenes.each do |scene| %>
+      <tr>
+        <td><%= scene.file_name %></td>
+        <td><%= scene.vertices_number %></td>
+        <td><%= scene.space_ratio %></td>
+        <td><%= scene.position_difference %></td>
+        <td><%= scene.colour_difference %></td>
+        <td><%= scene.scene_score %></td>
+        <td><%= scene.admin_panel_id %></td>
+        <td><%= scene.user_panel_id %></td>
+        <td><%= link_to 'Show', scene %></td>
+        <td><%= link_to 'Edit', edit_scene_path(scene) %></td>
+        <td><%= link_to 'Destroy', scene, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scene', new_scene_path %>

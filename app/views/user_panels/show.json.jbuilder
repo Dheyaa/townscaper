@@ -1,0 +1,1 @@
+json.partial! "user_panels/user_panel", user_panel: @user_panel

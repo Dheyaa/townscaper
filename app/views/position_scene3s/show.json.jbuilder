@@ -1,0 +1,1 @@
+json.partial! "position_scene3s/position_scene3", position_scene3: @position_scene3

@@ -1,0 +1,431 @@
+<% if notice %>
+  <div class="alert alert-warning">
+    <p><%= notice %></p>
+  </div>
+<% end %>
+
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<!-- Project Information -->
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<div class="container">
+  <p><strong>Project Name: </strong><%= @admin_panel.project_name %></p>
+</div>
+
+
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<!-- Scenes -->
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<div class="container-fluid alert alert-info remove-buttom-margin reduce-top-space">
+  <h4 class="text-center reduce-top-space remove-side-space under-line bg-darker-blue"><strong>Scenes Details</strong></h4>
+  <p><strong>Current Scenes:</strong><span> </span><%= Scene.all.count %><span> </span><%= link_to "Regenerate Scenes", delete_all_scenes_path %></p>
+	<% if Scene.all.count > 0 %>
+	  <% if @show_scenes != 6 %>
+	    <%= link_to "Show details", show_scenes_path(id: @admin_panel.id, show_scenes: @show_scenes) %>
+    <% else %>
+      <%= link_to "Hide details", show_scenes_path(id: @admin_panel.id, show_scenes: @show_scenes) %>
+      <!-- Scenes table -->
+      <p><strong>All Scene: </strong><%= Scene.all.count %></p>
+      <table class="table table-bordered modify-table bg-blue">
+        <thead>
+          <tr>
+            <th class="text-center">File name</th>
+            <th class="text-center">Vertices number</th>
+            <th class="text-center">Space ratio</th>
+            <th class="text-center">Position difference</th>
+            <th class="text-center">Colour difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Scene.all.order('created_at ASC').each do |scene| %>
+            <tr>
+              <td><%= scene.file_name %></td>
+              <td><%= scene.vertices_number %></td>
+              <td><%= scene.space_ratio %></td>
+              <td><%= scene.position_difference %></td>
+              <td><%= scene.colour_difference %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <p><strong>Scene1:</strong><%= Scene1.all.count %></p>
+      <table class="table table-bordered modify-table bg-blue">
+        <thead>
+          <tr>
+            <th class="text-center">File name</th>
+            <th class="text-center">Vertices number</th>
+            <th class="text-center">Space ratio</th>
+            <th class="text-center">Position difference</th>
+            <th class="text-center">Colour difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Scene1.all.order('created_at ASC').each do |scene| %>
+            <tr>
+              <td><%= scene.file_name %></td>
+              <td><%= scene.vertices_number %></td>
+              <td><%= scene.space_ratio %></td>
+              <td><%= scene.position_difference %></td>
+              <td><%= scene.colour_difference %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <p><strong>Scene2:</strong><%= Scene2.all.count %></p>
+      <table class="table table-bordered modify-table bg-blue">
+        <thead>
+          <tr>
+            <th class="text-center">File name</th>
+            <th class="text-center">Vertices number</th>
+            <th class="text-center">Space ratio</th>
+            <th class="text-center">Position difference</th>
+            <th class="text-center">Colour difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Scene2.all.order('created_at ASC').each do |scene| %>
+            <tr>
+              <td><%= scene.file_name %></td>
+              <td><%= scene.vertices_number %></td>
+              <td><%= scene.space_ratio %></td>
+              <td><%= scene.position_difference %></td>
+              <td><%= scene.colour_difference %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <p><strong>Scene3:</strong><%= Scene3.all.count %></p>
+      <table class="table table-bordered modify-table bg-blue">
+        <thead>
+          <tr>
+            <th class="text-center">File name</th>
+            <th class="text-center">Vertices number</th>
+            <th class="text-center">Space ratio</th>
+            <th class="text-center">Position difference</th>
+            <th class="text-center">Colour difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Scene3.all.order('created_at ASC').each do |scene| %>
+            <tr>
+              <td><%= scene.file_name %></td>
+              <td><%= scene.vertices_number %></td>
+              <td><%= scene.space_ratio %></td>
+              <td><%= scene.position_difference %></td>
+              <td><%= scene.colour_difference %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+	  <% end %>
+	<% end %>
+</div>
+<!-- /Scenes table -->
+
+
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<!-- Row data -->
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<div class="container-fluid alert alert-info remove-buttom-margin reduce-top-space">
+  <h4 class="text-center reduce-top-space remove-side-space under-line bg-darker-blue"><strong>Row Data</strong></h4>
+  <% all_preference_data = [] %>
+  <% all_vertices_number_data = [] %>
+  <% all_space_ratio_data = [] %>
+  <% all_position_difference_data = [] %>
+  <% all_colour_difference_data = [] %>
+  <% all_gender_data = [] %>
+  <% all_art_related_data = [] %>
+  <% all_education_level_data = [] %>  
+  <% all_age_data = [] %>
+  <% all_subject_data = [] %>
+  <% all_scenes = [] %>
+  <% all_users = [] %>
+  <% vertices1_users = [] %>
+  <% vertices2_users = [] %>
+  <% vertices3_users = [] %>
+  <% completed_user_panels = [] %>
+
+  <!-- Get only completed user Panels -->
+  <% @admin_panel.user_panels.order("created_at ASC").each do |userpanel| %>
+  	<% if userpanel.scenes_completed == true %>
+  		<% completed_user_panels.push(userpanel) %>
+    <% end %>
+  <% end %>
+
+  <!-- put scens from all 3 groups back together -->
+  <% n = 0 %>
+  <% while n < Scene1.count %>
+  	<% all_scenes.push(Scene1.all.order("created_at ASC")[n]) %>
+  	<% all_scenes.push(Scene2.all.order("created_at ASC")[n]) %>
+  	<% all_scenes.push(Scene3.all.order("created_at ASC")[n]) %>
+  	<% n+=1 %>
+  <% end %>
+
+  <!-- Classifies users base on the groups and then puth them together -->
+  <% n = 0 %>
+  <% while n < completed_user_panels.count %>
+    <% cur_user = completed_user_panels[n] %>
+    <% if cur_user.nowscenes.order("created_at ASC").first.file_name == Scene1.all.order("created_at ASC").first.file_name %>
+      <% vertices1_users.push(cur_user) %>
+    <% elsif cur_user.nowscenes.order("created_at ASC").first.file_name == Scene2.all.order("created_at ASC").first.file_name %>
+      <% vertices2_users.push(cur_user) %>
+    <% elsif cur_user.nowscenes.order("created_at ASC").first.file_name == Scene3.all.order("created_at ASC").first.file_name %>
+      <% vertices3_users.push(cur_user) %>
+    <% end %>
+    <% n+=1 %>
+  <% end %>
+  <% n = 0 %>
+  <% while n < vertices1_users.count || n < vertices2_users.count || n < vertices3_users.count %>
+    <% array = [] %>
+    <% if vertices1_users[n] %>
+      <% array.push(vertices1_users[n]) %>
+    <% end %>
+    <% if vertices2_users[n] %>
+      <% array.push(vertices2_users[n]) %>
+    <% end %>
+    <% if vertices3_users[n] %>
+      <% array.push(vertices3_users[n]) %>
+    <% end %>
+    <% all_users.push(array) %>
+    <% n+=1 %>
+  <% end %>
+
+  <% if @admin_panel.user_panels.count > 0 %>
+    <% if @show_data != 6 %>
+      <%= link_to "Show data", show_data_path(id: @admin_panel.id, show_data: @show_data) %>
+    <% else %>
+      <%= link_to "Hide data", show_data_path(id: @admin_panel.id, show_data: @show_data) %>
+      <% high_count = Scene3.all.count %>
+      <% all_users.each do |array| %>
+        <% i = 0 %>
+        <% while i < high_count %>
+          <% array.each do |user_panel| %>
+            <% if user_panel.nowscenes.order("created_at ASC")[i] %>
+              <% all_preference_data.push(user_panel.nowscenes.order("created_at ASC")[i].scene_score) %>
+              <% all_vertices_number_data.push(user_panel.nowscenes.order("created_at ASC")[i].vertices_number) %>
+              <% all_space_ratio_data.push(user_panel.nowscenes.order("created_at ASC")[i].space_ratio) %>
+              <% all_position_difference_data.push(user_panel.nowscenes.order("created_at ASC")[i].position_difference) %>
+              <% all_colour_difference_data.push(user_panel.nowscenes.order("created_at ASC")[i].colour_difference) %>
+              <% all_gender_data.push(user_panel.gender) %>
+              <% all_art_related_data.push(user_panel.art_related) %>
+              <% all_education_level_data.push(user_panel.education_level) %>
+              <% all_age_data.push(user_panel.age_group) %>
+              <% all_subject_data.push(user_panel.user.email) %>
+            <% end %>
+          <% end %>
+          <% i+=1 %>
+        <% end %>
+      <% end %>
+       <!-- Print All data -->
+      <p><strong>Data:</strong></p>
+
+      <p><strong>all_Preference <- c(
+      <% index = 1 %>
+      <% all_preference_data.each do |pref| %>
+      	<% if index == all_preference_data.count %>
+      		<%= pref %>
+    		<% else %>
+    			<%= pref %>,
+    		<% end %>
+        <% index += 1 %>
+      <% end %>
+      )</p>
+
+      <p><strong>all_vertices_number <- c(
+      <% index = 0 %>
+      <% all_vertices_number_data.each do |venu| %>
+        <% unless index == all_vertices_number_data.count - 1 %>
+         	<%= venu %>,
+        <% else %>
+         	<%= venu %>
+        <% end %>
+        <% index += 1 %>
+      <% end %>
+      )</p>
+
+      <p><strong>all_Space_ratio <- c(
+      <% index = 0 %>
+      <% all_space_ratio_data.each do |spra| %>
+        <% unless index == all_space_ratio_data.count - 1 %>
+        	<%= spra %>,
+        <% else %>
+          <%= spra %>
+        <% end %>
+        <% index += 1 %>
+      <% end %>
+      )</p>
+
+      <p><strong>all_position_difference <- c(
+      <% index = 0 %>
+      <% all_position_difference_data.each do |podi| %>
+        <% unless index == all_position_difference_data.count - 1 %> 
+        	<%= podi %>,
+        <% else %>
+        	<%= podi %>
+        <% end %>
+        <% index += 1 %>
+      <% end %>
+      )</p>
+
+      <p><strong>all_colour_difference <- c(
+      <% index = 0 %>
+      <% all_colour_difference_data.each do |codi| %>
+        <% unless index == all_colour_difference_data.count - 1 %>
+         	<%= codi %>,
+        <% else %>
+         	<%= codi %> 
+        <% end %>
+        <% index += 1 %>
+      <% end %>
+      )</p>
+
+      <p><strong>all_gender <- c(
+      <% index = 0 %>
+      <% all_gender_data.each do |gen| %>
+        <% unless index == all_gender_data.count - 1 %>
+        	"<%= gen %>",
+        <% else %>
+        	"<%= gen %>"
+        <% end %>
+        <% index += 1 %>
+      <% end %>
+      )</p>
+
+      <p><strong>all_art_related <- c(
+      <% index = 0 %>
+      <% all_art_related_data.each do |arre| %>
+        <% unless index == all_art_related_data.count - 1 %>
+        	"<%= arre %>",
+       	<% else %>
+       		"<%= arre %>"
+        <% end %>
+        <% index += 1 %>
+      <% end %>
+      )</p>
+
+      <p><strong>all_education_level <- c(
+      <% index = 0 %>
+      <% all_education_level_data.each do |edle| %>
+        <% unless index == all_education_level_data.count - 1 %>
+        	"<%= edle %>",
+        <% else %>
+        	"<%= edle %>"
+        <% end %>
+        <% index += 1 %>
+      <% end %>
+      )</p>
+
+      <p><strong>all_age <- c(
+      <% index = 0 %>
+      <% all_age_data.each do |ag| %>
+        <% unless index == all_age_data.count - 1 %>
+          "<%= ag %>",
+        <% else %>
+        	"<%= ag %>"
+        <% end %>
+        <% index += 1 %>
+      <% end %>
+      )</p>
+
+      <p><strong>all_subject <- c(
+      <% index = 0 %>
+      <% all_subject_data.each do |su| %>
+        <% unless index == all_subject_data.count - 1 %>
+          "<%= su %>",
+        <% else %>
+        	"<%= su %>"
+        <% end %>
+        <% index += 1 %>
+      <% end %>
+      )</p>
+    <% end %>
+  <% end %>
+</div>
+       
+
+
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<!-- Users -->
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<div class="container-fluid alert alert-success remove-buttom-margin reduce-top-space">
+  <h4 class="text-center reduce-top-space remove-side-space under-line bg-darker-green"><strong>Users Details</strong></h4>
+  <strong>Current Users:</strong><span> </span><p class="inline-ali"><%= @admin_panel.user_panels.count %></p>
+  <strong>Complete Users:</strong><span> </span><p class="inline-ali"><%= completed_user_panels.count %></p>
+  <div class="left-space">
+    <%= link_to "Create New User_panel", :controller => "user_panels", :action => "new", :admin_panel_id => @admin_panel.id %> 
+    <% if @admin_panel.user_panels.count >= 1 %>
+      | <%= link_to "Delete All Users", delete_users_path(id: @admin_panel.id), data: {confirm: "Are you sure you want to delete all the Users!"} %> |
+    <% end %>
+    <% if @admin_panel.user_panels.count > 0 %>
+      <% if @show_users != 6 %>
+        <%= link_to "Show details", show_users_path(id: @admin_panel.id, show_users: @show_users) %>
+      <% else %>
+        <%= link_to "Hide details", show_users_path(id: @admin_panel.id, show_users: @show_users) %>
+        <!-- Users table -->
+        <table class="table table-bordered modify-table bg-blue">
+          <thead>
+            <tr>
+              <th class="text-center">User Email</th>
+              <% i = 1 %>
+              <% @admin_panel.user_panels.first.nowscenes.each do |scene| %>
+                <th class="bg-2 text-center">Scene<%= i %> score</th>
+                <% i += 1 %>
+              <% end %>
+              <th class="bg-3 text-center">Gender</th>
+              <th class="bg-3 text-center">Art related</th>
+              <th class="bg-3 text-center">Age group</th>
+              <th class="bg-3 text-center">Education level</th>
+              <th class="bg-3 text-center">Feedback</th>
+              <th class="text-center">Control</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @admin_panel.user_panels.order('created_at DESC').each do |user_panel| %>
+              <tr>
+                <% if user_panel.user %>
+                  <td><%= user_panel.user.email %></td>
+                <% else %>
+                  <td>Not available</td>
+                <% end %>
+                <% user_panel.nowscenes.order('created_at ASC').each do |scene| %>
+                  <td class="bg-2"><p><%= scene.file_name %></p><%= scene.scene_score %></td>
+                <% end %>
+                <td class="bg-3"><%= user_panel.gender %></td>
+                <% if user_panel.art_related == true %>
+                  <td class="bg-3">Yes</td>
+                <% else %>
+                  <td class="bg-3">No</td>
+                <% end %>
+                <td class="bg-3"><%= user_panel.age_group %></td>
+                <td class="bg-3"><%= user_panel.education_level %></td>
+                <% if user_panel.feed_back %>
+                  <% if @show_feedback != 6 %>
+                    <td class="bg-3"><%= link_to "Show feedback", show_feedback_path(admin_id: @admin_panel.id, id: user_panel.feed_back.id, show_feedback: @show_feedback) %></td>
+                  <% else %>
+                    <td class="bg-3"><%= link_to "Hide feedback", show_feedback_path(admin_id: @admin_panel.id, id: user_panel.feed_back.id, show_feedback: @show_feedback) %>
+                      <p><%= user_panel.feed_back.title %>: <%= user_panel.feed_back.body %></p>
+                    </td>
+                  <% end %>
+                <% else %>
+                  <td class="bg-3">No</td>
+                <% end %>
+                <td><%= link_to "Destroy", destroy_user_path(id: user_panel.id, admin_id: @admin_panel.id), data: {confirm: 'Are you sure?'} %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<!-- /Users table -->
+<!-- /Users -->
+
+<!-- footer command -->
+<div class="container-fluid top-space">
+  <p>
+    <%= link_to 'Back', admin_panels_path %> |
+    <%= link_to 'Edit', edit_admin_panel_path(@admin_panel) %> 
+  </p>
+</div>
+<!-- /Footer command -->
+

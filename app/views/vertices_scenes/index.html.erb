@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Vertices Scenes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Vertices number</th>
+      <th>Space ratio</th>
+      <th>Position difference</th>
+      <th>Colour difference</th>
+      <th>Scene score</th>
+      <th>Admin panel</th>
+      <th>User panel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vertices_scenes.each do |vertices_scene| %>
+      <tr>
+        <td><%= vertices_scene.file_name %></td>
+        <td><%= vertices_scene.vertices_number %></td>
+        <td><%= vertices_scene.space_ratio %></td>
+        <td><%= vertices_scene.position_difference %></td>
+        <td><%= vertices_scene.colour_difference %></td>
+        <td><%= vertices_scene.scene_score %></td>
+        <td><%= vertices_scene.admin_panel_id %></td>
+        <td><%= vertices_scene.user_panel_id %></td>
+        <td><%= link_to 'Show', vertices_scene %></td>
+        <td><%= link_to 'Edit', edit_vertices_scene_path(vertices_scene) %></td>
+        <td><%= link_to 'Destroy', vertices_scene, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vertices scene', new_vertices_scene_path %>

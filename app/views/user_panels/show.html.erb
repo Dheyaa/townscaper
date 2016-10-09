@@ -1,0 +1,221 @@
+<!-- Notic -->
+<% if notice %>
+  <div class=" container alert alert-warning" id="notice">
+    <p><%= notice %></p>
+  </div>
+<% end %>
+<!-- /Notice -->
+<% if (@user_panel.tutorial_completed == false) %>
+  <!-- Tutorial -->
+  <div class="container alert alert-info">
+    <p>Hello, Please play the video or read the below section about How to Answer The Questionnaire</p>
+  </div>
+  <!-- Responsive Video -->
+  <div class="container">
+    <div class="embed-responsive embed-responsive-16by9">
+      <%= video_tag("tutorial.mp4", :controls => true, class: "embed-responsive-item") %>
+    </div>
+  </div>
+  <!-- /Responsive Video -->
+  <div class="container text-center">
+    <%= form_tag update_scene_path do %>
+      <%= hidden_field_tag "user_panel_id", @user_panel.id %>
+      <%= hidden_field_tag "tutorial", "true" %>
+      <%= submit_tag "Proceed to the questionnaire", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <!-- Illustration text -->
+  <div class="container">
+    <h3><strong>How to Answer The Questionnaire</strong></h3>
+    <p class="text-justify">Hello, my name is Dheyaa. Thank you for participating. The questionnaire will take about 10 minutes.</p>
+    <p class="text-justify">The study aims to collect information about your preferences towards the visual aspect of streetscape including the number of elements, the height, and the consistency of positon and colour of elements. Choose the scene that you prefer to see in the street, which is not too complex to cause overload or too simple to cause boredom. This will help decide a proper design for future streetscapes.</p>
+    <p class="text-justify">You will be shown two scenes on the screen. Imagine that each scene is a streetscape that you are watching from a sidewalk across the street. Choose the one that you prefer.</p>
+    <p class="text-justify">You need to show you preference by choosing one button on the Likert scale. If you prefer scene (A) you need to specify whether you slightly prefer (A), moderately prefer (A) or strongly prefer (A). On the other hand, if you prefer scene (B), you need to specify whether you slightly prefer (B), moderately Prefer (B) or strongly prefer (B). If you have no preference between the two scenes, you can choose Neutral.
+    After choosing a button, click Proceed to move to the next comparison.</p>
+    <p class="text-justify">Thank you.</p>
+  </div>
+  <!-- /Illustration text -->
+  <!-- /Tutorial -->
+<% else %>
+  <% if @user_panel.scenes_completed == true %>
+    <% if @first_scene_score && @first_pair_scene && @user_panel.scene_valid == false %>
+      <!-- Scene Validation -->
+      <div class="container-fluid top-p-space bottom-p-space bg-blue1">
+        <div class="container-fluid bg-baje">
+          <div class="row my-space">
+            <div class="col-xs-6">
+              <div class="embed-responsive embed-responsive-4by3">
+                <%= image_tag(@first_pair_scene[0].file_name, :size => "500x550", class: "embed-responsive-item bg-blue1") %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="embed-responsive embed-responsive-4by3">
+                <%= image_tag(@first_pair_scene[1].file_name, :size => "500x550", class: "embed-responsive-item bg-blue1") %>
+              </div>
+            </div>
+            <div class="col-xs-6 text-center">
+              <h4 class="small-text">Scene (A)</h4>
+            </div>
+            <div class="col-xs-6 text-center">
+              <h4 class="small-text">Scene (B)</h4>
+            </div>
+            <!-- </div> -->
+            <div class="col-xs-12 text-center">
+              <h3 class="reduce-top-space small-text">Which scene do you prefer?</h3>
+            </div>
+            <%= form_tag validate_scene_path do %>
+              <%= hidden_field_tag "first_scene_score", @first_scene_score %>
+              <%= hidden_field_tag "user_panel_id", @user_panel.id %>
+              <div class="col-xs-12 text-center top-space">
+                <ul class="gallery">
+                  <li><%= radio_button_tag(:value, 8) %></li>
+                  <li><%= radio_button_tag(:value, 4) %></li>
+                  <li><%= radio_button_tag(:value, 2) %></li>
+                  <li><%= radio_button_tag(:value, 1) %></li>
+                  <li><%= radio_button_tag(:value, 0.5) %></li>
+                  <li><%= radio_button_tag(:value, 0.25) %></li>
+                  <li><%= radio_button_tag(:value, 0.125) %></li>
+                </ul>
+              </div>
+              <div class="col-xs-12 text-center bottom-space">
+                <ul class="gallery">
+                  <li class="small-text">Strongly prefer (A)</li>
+                  <li class="small-text">Moderately prefer (A)</li>
+                  <li class="small-text">Slightly prefer (A)</li>
+                  <li class="small-text">Neutral</li>
+                  <li class="small-text">Slightly prefer (B)</li>
+                  <li class="small-text">Moderately prefer (B)</li>
+                  <li class="small-text">Strongly prefer (B)</li>
+                </ul>
+              </div>
+              <div class="col-xs-12 text-center top-space bottom-p-space">
+                <%= submit_tag "Proceed", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>  
+        </div>
+      </div>
+    <!-- /Scene Validation -->
+    <% else %>
+      <div class="container">
+        <div class="alert alert-success">
+          <strong> Thank you for your participation!</strong> The experiment has finished.
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <%= link_to "Visit your controll panel", user_panels_path, class: "btn btn-info" %>
+          </div>
+          <div class="col-xs-6">
+            <%= button_to "Exit", destroy_user_session_path, method: :delete, class: "btn btn-success" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if @first_scene_score.nil? && @first_pair_scene.nil? && @user_panel.scene_valid == false %>
+      <% UserPanel.update(@user_panel.id, :scenes_completed => false) %>
+      <% show_redirect (@user_panel.id) %>
+    <% end %>
+  <% else %> 
+    <% if @scenes.nil? || @scenes.length == 0 %>
+      <% @scenes = @user_panel.nowscenes.order("created_at ASC") %>
+      <% format_scenes_scores(@scenes) %>
+      <% @scenes = pairwise_comparison (@scenes) %>
+      <% first_scene_pair_ids = [] %>
+      <% first_scene_pair_ids.push(@scenes[1].id) %>
+      <% first_scene_pair_ids.push(@scenes[0].id) %>
+    <% end %>
+    <% scenes_ids = [] %>
+    <% @scenes.each do |scene| %>
+      <% scenes_ids.push(scene.id) %>
+    <% end %>
+    <% if @user_panel.nowscenes %>
+      <!-- Scenes questionnaire -->
+      <div class="container-fluid top-p-space bottom-p-space bg-blue1">
+        <div class="container-fluid bg-baje">
+          <div class="row my-space">
+            <div class="col-xs-6">
+              <div class="embed-responsive embed-responsive-4by3">
+                <%= image_tag(@scenes[0].file_name, class: "embed-responsive-item bg-blue1") %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="embed-responsive embed-responsive-4by3">
+                <%= image_tag(@scenes[1].file_name, class: "embed-responsive-item bg-blue1") %>
+              </div>
+            </div>
+            <div class="col-xs-6 text-center">
+              <h4 class="small-text">Scene (A)</h4>
+            </div>
+            <div class="col-xs-6 text-center">
+              <h4 class="small-text">Scene (B)</h4>
+            </div>
+            <div class="col-xs-12 text-center">
+              <h3 class="reduce-top-space small-text">Which scene do you prefer?</h3>
+            </div>
+            <%= form_tag update_scene_path do %>
+              <%= hidden_field_tag "user_panel_id", @user_panel.id %>
+              <% scenes_ids.each do |id| %>
+                <%= hidden_field_tag "scene_ids[]", id %>
+              <% end %>
+              <% if first_scene_pair_ids %>
+                <% first_scene_pair_ids.each do |id| %>
+                  <%= hidden_field_tag "first_pair_scene_ids[]", id %>
+                <% end %>
+              <% else %>
+                <% @first_pair_scene.each do |scene| %>
+                  <%= hidden_field_tag "first_pair_scene_ids[]", scene.id %>
+                <% end %>
+              <% end %>
+              <% if @first_scene_score %>
+                <%= hidden_field_tag "first_score", @first_scene_score %>
+              <% end %>
+              <%= hidden_field_tag "scene1_id", @scenes[0].id %>
+              <%= hidden_field_tag "scene2_id", @scenes[1].id %>
+              <div class="col-xs-12 text-center top-space">
+                <ul class="gallery">
+                  <li><%= radio_button_tag(:value, 8) %></li>
+                  <li><%= radio_button_tag(:value, 4) %></li>
+                  <li><%= radio_button_tag(:value, 2) %></li>
+                  <li><%= radio_button_tag(:value, 1) %></li>
+                  <li><%= radio_button_tag(:value, 0.5) %></li>
+                  <li><%= radio_button_tag(:value, 0.25) %></li>
+                  <li><%= radio_button_tag(:value, 0.125) %></li>
+                </ul>
+              </div>
+              <div class="col-xs-12 text-center bottom-space">
+                <ul class="gallery">
+                  <li class="small-text">Strongly prefer (A)</li>
+                  <li class="small-text">Moderately prefer (A)</li>
+                  <li class="small-text">Slightly prefer (A)</li>
+                  <li class="small-text">Neutral</li>
+                  <li class="small-text">Slightly prefer (B)</li>
+                  <li class="small-text">Moderately prefer (B)</li>
+                  <li class="small-text">Strongly prefer (B)</li>
+                </ul>
+              </div>
+              <div class="col-xs-12 text-center top-space bottom-p-space">
+                <%= submit_tag "Proceed", class: "btn btn-primary" %>
+              </div> 
+            <% end %> 
+          </div>
+        </div>
+      </div>
+      <!-- questionnaire footer -->
+      <div class="container-fluid top-space text-center">
+        <% total = (@user_panel.nowscenes.count * (@user_panel.nowscenes.count - 1)) / 2 %>
+        <p>Completed steps: <%= total - (scenes_ids.count / 2) %> of <%= total %></p>
+      </div>
+      <div class="container-fluid top-space">
+        <h4><%= link_to 'Play Tutorial', tutorial_path %></h4>
+      </div>
+    <% else %>
+      <div class="container">
+        <h1><strong>Sorry, the experiment is not ready yet. Please visit later!</h1></strong>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+<!-- questionnaire footer -->
+<!-- /Scenes questionnaire -->

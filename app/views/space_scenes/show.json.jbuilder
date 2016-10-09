@@ -1,0 +1,1 @@
+json.partial! "space_scenes/space_scene", space_scene: @space_scene

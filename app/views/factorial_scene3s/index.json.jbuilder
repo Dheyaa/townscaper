@@ -1,0 +1,1 @@
+json.array! @factorial_scene3s, partial: 'factorial_scene3s/factorial_scene3', as: :factorial_scene3

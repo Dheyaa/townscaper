@@ -1,0 +1,1 @@
+json.array! @position_scenes, partial: 'position_scenes/position_scene', as: :position_scene

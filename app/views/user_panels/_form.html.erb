@@ -1,0 +1,112 @@
+<% if @user_panel.errors.any? %>
+  <div class="container alert alert-warning" id="error_explanation">
+    <h2><%= pluralize(@user_panel.errors.count, "error") %> prohibited this user_panel from being saved:</h2>
+    <ul>
+    <% @user_panel.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<!-- Header -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-6"><%= image_tag("unicon.jpg") %></div>
+    <div class="col-md-6 text-right">
+      <p><strong>Discipline of Architecture</strong></p>
+      <p><strong>Faculty of Architecture,</strong></p>
+      <p><strong>Design and Planning</strong></p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <p>ABN 15 211 513 464</p>
+  <hr class="dark-line">
+</div>
+<!-- /Header -->
+
+<!-- Bellow Header -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 text-primary">
+      <p><strong>CHIEF INVESTIGATOR NAME:</strong></p>
+      <p><strong>Peter Armstrong</strong></p>
+      <p>Chief Investigator Title:</p>
+      <p>Doctor</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <p>Room 327</p>
+      <p>Wilkinson Building G04</p>
+      <p>The University of Sydney</p>
+      <p>NSW 2006 AUSTRALIA</p>
+      <p>Telephone:   +61 2 9351 3857</p>
+      <p>Facsimile:  +61 2 9351 3857</p>
+      <p>Email: peter.armstrong@sydney.edu.au</p>
+      <p>Web: http://www.sydney.edu.au</p>
+    </div>
+  </div>
+</div>
+<!-- /Below Header -->
+
+<!-- Title -->
+<div class="container text-center">
+  <p class="text-primary"><strong>[Visual Consistency in Townscape]</strong></p>
+  <p><strong>PARTICIPANT CONSENT FORM</strong></p>
+</div>
+<!-- /Title -->
+
+<!-- Statement 1 -->
+<div class="container text-justify">
+  <p>I, the participant, hereby agree to take part in this research study.</p>
+  <p>In giving my consent I state that:</p>
+  <p class="tab">&#10003; I understand the purpose of the study, what I will be asked to do, and any risks/benefits involved.</p>
+  <p class="tab">&#10003; I have read the Participant Information Statement and have been able to discuss my involvement in the study with the researchers if I wish to do so.</p>
+  <p class="tab">&#10003; The researchers have addressed questions that I may have about the study and I am happy with the provided information.</p>
+  <p class="tab">&#10003; I understand that being in this study is completely voluntary and I do not have to take part. My decision whether to be in the study will not affect my relationship with the researchers or anyone else at the University of Sydney now or in the future.</p>
+  <p class="tab">&#10003; I understand that I can withdraw from the study at any time.</p>
+  <p class="tab">&#10003; I understand that my questionnaire responses cannot be withdrawn once the study is finished, as they will be part of data analysis and it will cause the research a precious time to conduct the experiment again to provide alternatives for withdrawn data.</p>
+  <p class="tab">&#10003; I understand that personal information about me that is collected over the course of this project will be stored securely and will only be used for purposes that I have agreed to. I understand that information about me will only be told to others with my permission, except as required by law.</p>
+  <p class="tab">&#10003; I understand that the results of this study may be published, and that publications will not contain my name or any identifiable information about me.</p>
+</div>
+<!-- /Statement 1 -->
+
+<!-- Form -->
+<div class="container">
+  <%= form_for(@user_panel) do |f| %>
+    <div class="field">
+      <p><strong><%= f.check_box :consent %> I acknowledge that I have read and agree to the contents of this form</strong></p>
+    </div>
+    <div class="field">
+      <p><strong><%= f.check_box :feedback %> I would like to receive feedback about the overall results of this study by email</strong></p>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :user_id %>
+    </div> 
+    <div class="field">
+        <%= f.hidden_field :admin_panel_id %>
+    </div>
+    <p>Please prvide the following personal information which is required for this study</p>
+    <div class="field tab">
+      <%= f.label :age_group, "Age group:" %>
+      <%= f.select :age_group, [['18-24 years old','18-24'],['25-34 years old','25-34'],['35-44 years old','35-44'],['45-54 years old','45-54'],['55-64 years old','55-64'],['65-74 years old','65-74'],['75 years or older','75']], :prompt => "choose age group" %>
+    </div>
+    <div class="field tab">
+      <%= f.label :art_related, "Do you study or work in a field which mainly involves art or architecture" %>
+      <%= f.select :art_related, [['Yes',true],['No',false]], :prompt => "choose an answer" %>
+    </div>
+    <div class="field tab">
+      <%= f.label :gender, "Gender" %>
+      <%= f.select :gender, [['Female','female'],['Male','male'],['Others','others']], :prompt => "choose a gender" %>
+    </div>
+    <div class="field tab">
+      <%= f.label :education_level, "Education level:" %>
+      <%= f.select :education_level, [['No schooling completed','No school'],['Nursery school to 8th grade','up to 8th grade'],['Some high school, no diploma','Some high school'],['High school graduate, diploma or the equivalent','High school/diploma/equivalent'],['Trade/technical/vocational training','Trade/technical/vocational'],['Associate degree','Associate degree'],['Bachelor’s degree','Bachelor’s degree'],['Master’s degree','Master’s degree'],['Professional degree','Professional degree'],['Doctorate degree','Doctorate degree']], :prompt => "choose most recent education level" %>
+    </div>
+
+    <div class="actions text-center">
+      <%= f.submit "Proceed" %>
+    </div>
+  <% end %> 
+</div>
+<!-- /Form -->

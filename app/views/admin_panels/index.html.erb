@@ -1,0 +1,28 @@
+<div class="container">
+  <% if notice %>
+    <div class="alert alert-warning">
+      <p><%= notice %></p>
+    </div>
+  <% end %>
+  <h1>Listing Admin Panels</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Project name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @admin_panels.each do |admin_panel| %>
+        <tr>
+          <td><%= admin_panel.project_name %></td>
+          <td><%= link_to 'Show', admin_panel %> |</td>
+          <td><%= link_to 'Edit', edit_admin_panel_path(admin_panel) %> |</td>
+          <td><%= link_to 'Destroy', admin_panel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Admin panel', new_admin_panel_path %>
+</div>

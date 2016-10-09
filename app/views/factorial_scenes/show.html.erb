@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @factorial_scene.file_name %>
+</p>
+
+<p>
+  <strong>Vertices number:</strong>
+  <%= @factorial_scene.vertices_number %>
+</p>
+
+<p>
+  <strong>Space ratio:</strong>
+  <%= @factorial_scene.space_ratio %>
+</p>
+
+<p>
+  <strong>Position difference:</strong>
+  <%= @factorial_scene.position_difference %>
+</p>
+
+<p>
+  <strong>Colour difference:</strong>
+  <%= @factorial_scene.colour_difference %>
+</p>
+
+<p>
+  <strong>Scene score:</strong>
+  <%= @factorial_scene.scene_score %>
+</p>
+
+<p>
+  <strong>Admin panel:</strong>
+  <%= @factorial_scene.admin_panel_id %>
+</p>
+
+<p>
+  <strong>User panel:</strong>
+  <%= @factorial_scene.user_panel_id %>
+</p>
+
+<%= link_to 'Edit', edit_factorial_scene_path(@factorial_scene) %> |
+<%= link_to 'Back', factorial_scenes_path %>

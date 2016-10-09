@@ -1,0 +1,2 @@
+module ColourScenesHelper
+end

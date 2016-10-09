@@ -1,0 +1,20 @@
+{
+  "name": "six",
+  "authors": [
+    "Dheyaa <deaa86_arch@hotmail.com>"
+  ],
+  "description": "deaa",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "colorLab": "signalwerk/colorLab"
+  }
+}

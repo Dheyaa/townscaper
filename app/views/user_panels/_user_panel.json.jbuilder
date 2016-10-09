@@ -1,0 +1,2 @@
+json.extract! user_panel, :id, :consent, :feedback, :user_id, :admin_panel_id, :scenes_completed, :tutorial_completed, :scene_valid, :age_group, :art_related, :gender, :education_level, :created_at, :updated_at
+json.url user_panel_url(user_panel, format: :json)

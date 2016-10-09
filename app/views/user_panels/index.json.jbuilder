@@ -1,0 +1,1 @@
+json.array! @user_panels, partial: 'user_panels/user_panel', as: :user_panel

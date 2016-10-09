@@ -1,0 +1,1 @@
+json.partial! "nowscenes/nowscene", nowscene: @nowscene
