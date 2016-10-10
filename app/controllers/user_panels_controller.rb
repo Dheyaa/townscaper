@@ -172,13 +172,17 @@ class UserPanelsController < ApplicationController
 
   def create
     @user_panel = UserPanel.new(user_panel_params)
-    if (UserPanel.all.count + 1) % 3 == 0
-      scenes = Scene3.all.order('created_at ASC')
-    elsif (UserPanel.all.count + 1) % 2 == 0
+
+    if UserPanel.all.count == 0
+      scenes = Scene1.all.order('created_at ASC')
+    elsif UserPanel.all.order('created_at ASC').last.nowscenes.order("created_at ASC").first.file_name == Scene1.all.order("created_at ASC").first.file_name
       scenes = Scene2.all.order('created_at ASC')
-    else
+    elsif UserPanel.all.order('created_at ASC').last.nowscenes.order("created_at ASC").first.file_name == Scene2.all.order("created_at ASC").first.file_name
+      scenes = Scene3.all.order('created_at ASC')
+    elsif UserPanel.all.order('created_at ASC').last.nowscenes.order("created_at ASC").first.file_name == Scene3.all.order("created_at ASC").first.file_name
       scenes = Scene1.all.order('created_at ASC')
     end
+
     scenes.order('created_at ASC').each do |scene|
       @user_panel.nowscenes.new(file_name: scene.file_name, vertices_number: scene.vertices_number, space_ratio: scene.space_ratio, position_difference: scene.position_difference, colour_difference: scene.colour_difference, admin_panel_id: @user_panel.admin_panel_id, user_panel_id: @user_panel.id)
     end
